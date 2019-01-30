@@ -1,0 +1,51 @@
+simulator( 'spectre )
+design(	 "/local/sergiomodeling2/aykutkabaoglu/sim/rf_test/spectre/schematic/netlist/netlist")
+resultsDir( "/local/sergiomodeling2/aykutkabaoglu/sim/rf_test/spectre/schematic" )
+modelFile( 
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_bjt_v121.lib.scs" "tt_bip")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_mimcap_v101.lib.scs" "mimcaps_typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_reg18bpw_v123.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_reg33bpw_v123.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_res_v141.lib.scs" "res_typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_lvt18_v113.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_lvt33_v113.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_reg18_v124.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_reg33_v114.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_zvt18_v121.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_zvt33_v113.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/core_rf_v2d4.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/io_rf_v2d3.lib.scs" "tt")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/l_slcr20k_rf_v2d3.lib.scs" "typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mimcapm_rf_v2d3.lib.scs" "typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/pad_rf_v2d3.lib.scs" "typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/rnhr_rf_v2d4.lib.scs" "typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/rnnpo_rf_v2d4.lib.scs" "typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/rnppo_rf_v2d4.lib.scs" "typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/vardiop_rf_v2d3.lib.scs" "typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/varmis_18_rf_v2d3.lib.scs" "typ")
+    '("/vlsi/projects/sergiomodeling2/UMC_180nm_02_16/Cadence_IC6_RF/UMC_18_CMOS/../Models/Spectre/mm180_diode_v113.mdl.scs" "")
+)
+
+analysis('dc ?saveOppoint t ?param "vd"  ?start "1.8" ?stop "0"  
+		?step "-0.01"  )
+desVar("vg",0)
+desVar("vd",0)
+desVar("vb",1.800000e+00)
+desVar("vs",1.800000e+00)
+desVar("width",1.000000e-05)
+desVar("length",1.000000e-05)
+
+envOption(
+	'analysisOrder  list("dc") 
+)
+save( 'i "/M0/S" )
+temp(0) 
+run()
+selectResult( 'dc )
+ocnPrint(?output "../sonuclar/n_vds.dat" ?numberNotation 'scientific getData("/M0/S"))
+
+vdsat = OP("M0" "vdsat")
+ocnPrint(?output "../sonuclar/vdsat.dat" ?numberNotation 'scientific vdsat)
+
+exit
+

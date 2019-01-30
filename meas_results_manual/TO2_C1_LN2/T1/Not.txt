@@ -1,0 +1,2 @@
+Id-Vg Vdmax = 1.2V
+Id-Vd Vgmax = 0.8v
