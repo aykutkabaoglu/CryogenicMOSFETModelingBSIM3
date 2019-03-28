@@ -17,7 +17,6 @@ wafer = [3 5 6]; % 0 3 5 6 wafer numbers
 chip = [1:11]; % 1:10 chip numbers
 transistor = [transistor_no]; % 1:22 transistor numbers
 ln2 = [1];  % 0 (24C), 1 (under LN2) 
-sweep = 'VDS'; % 'VDS' 'VGS'
 bias = [first_bias]; % For VDS, VBS: 0 1 2 3 4 (0 -0.1 -0.2 -0.3 -0.4) / For VGS, VDS: 1 2 3 (1.8 0.05 0.01)
 
 if sweep == 'VDS'

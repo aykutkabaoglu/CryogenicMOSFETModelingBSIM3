@@ -14,7 +14,7 @@ if manual_input
     Id_Vd_Vgmax1_path = './meas_results_manual/T1/Id_Vd_Vgmax1.csv';
     %    Id_Vg_Vdmin_s_path = './meas_results_manual/T1/Id_Vg_Vdmin.csv'; % farkli kanal boyutundaki olcum sonucu dahil edilerek kt1l hesaplanmak istendiginde burasi aktif edilir
 else
-    transistor_no = 9; % ölçüm dosyalarından sonuçları otomatik çekebilmek için kullanilir
+    transistor_no = 2; % ölçüm dosyalarından sonuçları otomatik çekebilmek için kullanilir
     % No - W(um), L(um) , type
     %  1 - 0.24 , 0.18  , n
     %  2 - 10   , 0.18  , n
@@ -38,7 +38,7 @@ Ldrawn_s = 0.18e-06; % short_ch aktif ise kullanilir ve kt1l'nin hesaplanacagi t
 
 %rf transistorlerde girilen width length degerlerinin bir onemi yok degisiklikler cadence'da simulasyonlarin yapildigi devre uzerinde yapilmali
 transistor_name = 'n_18'; % n_18 / p_18 / n_l18w500_18_rf / p_l18w500_18_rf (p_18 ile n_18 ayni)
-type = 'p'; % n / p - transistor_name ne olursa olsun burada n veya p girilir
+type = 'n'; % n / p - transistor_name ne olursa olsun burada n veya p girilir
 
 
 vds_second_bias = 8; % Id-Vds için VGS degerleri 8 9 10 11 12 (VGS = 1.8 1.5 1.2 0.9 0.6)
